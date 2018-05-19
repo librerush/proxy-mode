@@ -108,17 +108,19 @@
 
 (defun proxy-mode-enable ()
   "Enable proxy-mode."
-  (if proxy-mode-proxy-type
-      (message "proxy-mode is already enabled.")
-    (cl-case (cdr (assoc
-                   (completing-read "Select proxy service to enable: " (mapcar 'car proxy-mode-types))
-                   proxy-mode-types))
-      ('http (proxy-mode-http-enable))
-      ('socks (proxy-mode-socks-enable))
-      ('url (proxy-mode-url-enable)))))
+  (interactive
+   (if proxy-mode-proxy-type
+       (message "proxy-mode is already enabled.")
+     (cl-case (cdr (assoc
+		    (completing-read "Select proxy service to enable: " (mapcar 'car proxy-mode-types))
+		    proxy-mode-types))
+       ('http (proxy-mode-http-enable))
+       ('socks (proxy-mode-socks-enable))
+       ('url (proxy-mode-url-enable))))))
 
 (defun proxy-mode-disable ()
   "Disable proxy-mode."
+  (interactive)
   (pcase proxy-mode-proxy-type
     ("http" (proxy-mode-http-disable))
     ("url" (proxy-mode-url-disable))
