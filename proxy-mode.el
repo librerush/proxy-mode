@@ -141,6 +141,7 @@
       (proxy-mode-enable)
     (proxy-mode-disable)))
 
+;;;###autoload
 (define-globalized-minor-mode global-proxy-mode proxy-mode proxy-mode)
 
 
