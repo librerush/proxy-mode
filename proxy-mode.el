@@ -145,8 +145,8 @@
       (call-interactively 'proxy-mode-enable)
     (call-interactively 'proxy-mode-disable)))
 
-;;;###autoload
-(define-globalized-minor-mode global-proxy-mode proxy-mode proxy-mode)
+;; ;;;###autoload
+;; (define-globalized-minor-mode global-proxy-mode proxy-mode proxy-mode)
 
 
 
