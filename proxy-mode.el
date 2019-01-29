@@ -95,7 +95,7 @@
 (defun proxy-mode-socks-enable ()
   "Enable Socks proxy."
   (setq-local url-gateway-method 'socks)
-  (setq-local socks-noproxy '("localhost"))
+  (setq-local socks-noproxy '("localhost" "192.168.*" "10.*"))
   (setq-local socks-server proxy-mode-socks-proxy)
   (setq-local proxy-mode-proxy-type "socks"))
 
