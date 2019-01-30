@@ -111,16 +111,16 @@
 
 (defun proxy-mode-enable ()
   "Enable proxy-mode."
-  (let ((selected (if proxy-mode-proxy-type
-                      (message "proxy-mode is already enabled.")
-                    (cl-case (cdr (assoc
-                                   (completing-read "Select proxy service to enable: " (mapcar 'car proxy-mode-types))
-                                   proxy-mode-types))
-                      ('http (proxy-mode-http-enable))
-                      ('socks (proxy-mode-socks-enable))
-                      ('url (proxy-mode-url-enable))))))
-    (message "%s proxy selected." selected)
-    nil))
+  (let ((selected-proxy (if proxy-mode-proxy-type
+                            (message "proxy-mode is already enabled.")
+                          (cdr (assoc
+                                (completing-read "Select proxy service to enable: "
+                                                 (mapcar 'car proxy-mode-types))
+                                proxy-mode-types)))))
+    (cl-case selected-proxy
+      ('http (proxy-mode-http-enable))
+      ('socks (proxy-mode-socks-enable))
+      ('url (proxy-mode-url-enable)))))
 
 (defun proxy-mode-disable ()
   "Disable proxy-mode."
