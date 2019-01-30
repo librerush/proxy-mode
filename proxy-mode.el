@@ -70,7 +70,8 @@
   ;; ( "HTTP_PROXY" process-environment)
   (setenv "HTTP_PROXY"  proxy-mode-http-proxy)
   (setenv "HTTPS_PROXY" proxy-mode-http-proxy)
-  (setq-local proxy-mode-proxy-type "http"))
+  (setq-local proxy-mode-proxy-type "http")
+  (getenv "HTTP_PROXY"))
 
 (defun proxy-mode-http-disable ()
   "Disable HTTP proxy."
@@ -83,7 +84,8 @@
 (defun proxy-mode-url-enable ()
   "Enable URL proxy."
   (setq-local url-proxy-services proxy-mode-url-proxy)
-  (setq-local proxy-mode-proxy-type "url"))
+  (setq-local proxy-mode-proxy-type "url")
+  (message (format "Proxy-mode %s url proxy enabled." (car proxy-mode-url-proxy))))
 
 (defun proxy-mode-url-disable ()
   "Disable URL proxy."
@@ -97,7 +99,8 @@
   (setq-local url-gateway-method 'socks)
   (setq-local socks-noproxy '("localhost" "192.168.*" "10.*"))
   (setq-local socks-server proxy-mode-socks-proxy)
-  (setq-local proxy-mode-proxy-type "socks"))
+  (setq-local proxy-mode-proxy-type "socks")
+  (message "Proxy-mode socks proxy %s enabled." proxy-mode-socks-proxy))
 
 (defun proxy-mode-socks-disable ()
   "Disable Socks proxy."
