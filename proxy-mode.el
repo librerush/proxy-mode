@@ -55,7 +55,7 @@
   :safe #'nested-alist-p
   :group 'proxy-mode)
 
-(defcustom proxy-mode-socks-proxy '("Default server" "127.0.0.1" 1080 5)
+(defcustom proxy-mode-socks-proxy '("Default server" "127.0.0.1" 11000 5)
   "Default `socks-server' value."
   :type 'list
   :safe #'listp
